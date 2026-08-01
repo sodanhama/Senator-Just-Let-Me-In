@@ -207,10 +207,14 @@ style input:
 screen choice(items):
     style_prefix "choice"
 
-    vbox:
+    hbox:
+        xalign 0.5
+        yalign 0.5
+        spacing 25
         for i in items:
-            textbutton i.caption action i.action
-
+            textbutton i.caption action i.action:
+                xminimum 0
+                text_size 26
 
 style choice_vbox is vbox
 style choice_button is button
