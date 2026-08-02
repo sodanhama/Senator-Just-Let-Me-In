@@ -73,7 +73,7 @@ label start:
 
     "You're excited to explore Singapore."
 
-    "You have to go through immigration and use the MRT to make..."
+    "You have to go through immigration and use the MRT to reach the venue."
 
     scene bg immigration
 
@@ -81,25 +81,23 @@ label start:
 
     "You are at the immigration counter."
 
-    crowd "Better than the US immigration counter in the USA, I guess."
+    crowd "Looks better than the US immigration counter, I guess."
 
     "You think it's a good idea to get going as you scan your passport..."
 
-    "However, you are met with a stern rejection message on the display."
+    "However, you are met with a stern rejection message on the display. There seems to be a problem with your SGAC"
 
-    crowd "oooohh, that's a first."
+    crowd "Uh oh, that's a first."
 
     "You panic."
 
     s "Really?"
 
-    "The first time you've travelled alone, you're met with rejection."
-
     show manan at custom_left
     show daamin at custom_center
     show renran at custom_right
 
-    "You are escorted by a group of three immigration officers."
+    "Three immigration officers appear.You are escorted by a group of three immigration officers."
 
     "The officers seem familiar: the handsome Manan, the quirky Daamin, and the kind Renran."
 
