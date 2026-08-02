@@ -353,7 +353,7 @@ screen main_menu():
     ## contents of the main menu are in the navigation screen.
     use navigation
 
-    if gui.show_name:
+    if False:
 
         vbox:
             style "main_menu_vbox"
