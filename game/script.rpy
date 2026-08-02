@@ -5,8 +5,22 @@ define daamin = Character(f"Senator Daamin", color="#DEF4C6")
 define manan = Character(f"Senator Manan", color="#1C7C54")
 define renran = Character(f"Senator Renran", color="#73E2A7")
 
-define approved = True
-define intent = True
+default approved = True
+
+image bg room = Transform("bg room.png", fit="cover")
+
+init python:
+    def approve():
+        global approved
+        approved = True
+
+    def deny():
+        global approved
+        approved = False
+
+screen approve_key():
+    key "`" action [Function(approve), Return()]
+    key "=" action [Function(deny), Return()]
 
 define questions = [
     "I secretly approach you and offer three Hackatime hours, however I get to change your Slack profile for a week. Do you accept or reject my offer?",
@@ -48,13 +62,13 @@ label start:
 
     scene bg airport
 
-    "You are a hack clubber"
+    "You are a hack clubber."
 
-    s "This is the first time I've travelled abroad"
+    s "This is the first time I've travelled abroad."
 
-    "You're excited to explore Singapore"
+    "You're excited to explore Singapore."
 
-    "You have to go through immigration and use the MRT to mak..."
+    "You have to go through immigration and use the MRT to make..."
 
     scene bg immigration
 
@@ -68,7 +82,7 @@ label start:
 
     crowd "oooohh, that's a first."
 
-    "You panic"
+    "You panic."
 
     s "Really?"
 
@@ -92,7 +106,7 @@ label start:
     s "What am I gonna do? I need my MRT card to get around Singapore..."
 
     "His pickup time was scheduled for 10:00 AM, and it was later found out that Hack Club never did the pickup."
-    officer ""
+    officer "Hmm"
 
     if officer == daamin:
         show daamin
@@ -121,9 +135,9 @@ label start:
 
     $ approved = renpy.random.choice([True, False])
 
-    show manan
+    show manan at left
     show daamin
-    show renran
+    show renran at right
 
     "The officers sit together and discuss your application."
 
@@ -135,17 +149,25 @@ label start:
 
     "Do you want the application to be approved?"
 
-    menu:
-        "Yes":
-            $ intent = True
-        "No":
-            $ intent = False
+    show screen approve_key
+    $ renpy.pause(hard=True)
+    hide screen approve_key
 
-    if approved == intent:
+    if approved:
+        officer "Congratulations! Your application has been approved."
+
+        s "Thank you so much!"
+
+        "You are given your MRT card and allowed to explore Singapore."
         show approved
-        "SGAC approved"
     else:
+        officer "I'm sorry, but your application has been rejected."
+
+        s "What? Why?"
+
+        "You are escorted back to the airport and sent back home."
         show denied
-        "SGAC denied"
+
+    
 
     return

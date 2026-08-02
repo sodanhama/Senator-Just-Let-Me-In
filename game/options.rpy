@@ -207,3 +207,6 @@ init python:
 ## by a slash.
 
 # define build.itch_project = "renpytom/test-project"
+
+init python:
+    config.keymap['game_menu'] = []
